@@ -1,0 +1,49 @@
+image: mirisbowring/texlive_ctan_full:2019
+
+stages:
+  - deploy
+
+research_rule_kakenhi:
+  stage: deploy
+  script:
+    - mkdir -p ./public/
+    - cd ./tex/科学研究費助成事業-科研費-の研究実施規程
+    - make pdf
+    - cp ./科学研究費助成事業-科研費-の研究実施規程.pdf ../../public/
+  artifacts:
+    paths:
+    - public
+
+00_公的研究費等の運営・管理責任体制:
+  stage: deploy
+  script:
+    - mkdir -p ./public/
+    - cd ./tex/00_公的研究費等の運営・管理責任体制
+    - make pdf
+    - cp ./公的研究費等の運営・管理責任体制.pdf ../../public/
+  artifacts:
+    paths:
+    - public
+
+research_rule_kakenhi:
+  stage: deploy
+  script:
+    - mkdir -p ./public/
+    - cd ./tex/科学研究費助成事業-科研費-の研究実施規程
+    - make pdf
+    - cp ./科学研究費助成事業-科研費-の研究実施規程.pdf ../../public/
+  artifacts:
+    paths:
+    - public
+
+research_rule_kakenhi:
+  stage: deploy
+  script:
+    - mkdir -p ./public/
+    - cd ./tex/科学研究費助成事業-科研費-の研究実施規程
+    - make pdf
+    - cp ./科学研究費助成事業-科研費-の研究実施規程.pdf ../../public/
+  artifacts:
+    paths:
+    - public
+#以降、他のディレクトリについてもMakefileをつくり、コピペすればOK
