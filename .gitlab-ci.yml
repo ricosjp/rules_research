@@ -3,19 +3,12 @@ image: mirisbowring/texlive_ctan_full:2019
 stages:
   - deploy
 
-build:
+pages:
   stage: deploy
   script:
     - make pdf -j
     - mkdir -p ./public/
     - find . -name '*.pdf' | xargs -I% mv % ./public/
-  artifacts:
-    paths:
-    - public
-
-pages:
-  stage: deploy
-  script:
     - for name in `ls pubic/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; done
   artifacts:
     paths:
