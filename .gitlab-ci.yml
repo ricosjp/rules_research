@@ -6,8 +6,8 @@ stages:
 build:
   stage: deploy
   script:
-    - mkdir -p ./public/
     - make pdf -j
+    - mkdir -p ./public/
     - find . -name '*.pdf' | xargs -I% mv % ./public/
   artifacts:
     paths:
