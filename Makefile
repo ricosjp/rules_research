@@ -1,4 +1,4 @@
-SUBDIRS := $(wildcard */)
+SUBDIRS := tex
 .PHONY: $(SUBDIRS)
 
 %::
