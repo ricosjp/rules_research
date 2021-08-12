@@ -1,5 +1,5 @@
 # Change NAME accordingly
-NAME = 00_公的研究費等の運営・管理責任体制
+NAME = 00_koutekikenkyuhiunneikanritaisei
 
 TEX = platex
 DVI = dvipdfmx
@@ -14,7 +14,8 @@ view:
 clean:
 	$(RM) $(NAME).pdf $(NAME).dvi $(NAME).aux $(NAME).log
 
-$(NAME).pdf: $(NAME).tex include/body.tex
+$(NAME).pdf: 
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
+	$(DVI) $(NAME).dvi

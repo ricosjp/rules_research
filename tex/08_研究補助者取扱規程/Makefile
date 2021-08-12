@@ -1,5 +1,5 @@
 # Change NAME accordingly
-NAME = 08_研究補助者取扱規程
+NAME = 08_kenkyuhojyotoriatsukaikitei
 
 TEX = platex
 DVI = dvipdfmx
@@ -14,7 +14,8 @@ view:
 clean:
 	$(RM) $(NAME).pdf $(NAME).dvi $(NAME).aux $(NAME).log
 
-$(NAME).pdf: $(NAME).tex include/body.tex
+$(NAME).pdf:
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
+	$(DVI) $(NAME).dvi

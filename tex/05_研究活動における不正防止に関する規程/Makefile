@@ -1,5 +1,5 @@
 # Change NAME accordingly
-NAME = 05_研究活動における不正防止に関する規程
+NAME = 05_kenkyukatsudoufuseiboushikitei
 
 TEX = platex
 DVI = dvipdfmx
@@ -14,7 +14,8 @@ view:
 clean:
 	$(RM) $(NAME).pdf $(NAME).dvi $(NAME).aux $(NAME).log
 
-$(NAME).pdf: $(NAME).tex include/body.tex
+$(NAME).pdf:
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
+	$(DVI) $(NAME).dvi

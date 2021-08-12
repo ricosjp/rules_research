@@ -1,5 +1,5 @@
 # Change NAME accordingly
-NAME = 03_科学研究費助成事業-科研費-の研究実施規程
+NAME = 03_kakenhikenkyujisshikitei
 
 TEX = platex
 DVI = dvipdfmx
@@ -14,7 +14,8 @@ view:
 clean:
 	$(RM) $(NAME).pdf $(NAME).dvi $(NAME).aux $(NAME).log
 
-$(NAME).pdf: $(NAME).tex include/body.tex
+$(NAME).pdf:
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
+	$(DVI) $(NAME).dvi

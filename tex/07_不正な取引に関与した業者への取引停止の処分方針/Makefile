@@ -1,5 +1,5 @@
 # Change NAME accordingly
-NAME = 07_不正な取引に関与した業者への取引停止の処分方針
+NAME = 07_fuseitorihikigyosyasyobunhoushin
 
 TEX = platex
 DVI = dvipdfmx
@@ -14,7 +14,8 @@ view:
 clean:
 	$(RM) $(NAME).pdf $(NAME).dvi $(NAME).aux $(NAME).log
 
-$(NAME).pdf: $(NAME).tex include/body.tex
+$(NAME).pdf:
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
 	$(TEX) $(NAME).tex
+	$(DVI) $(NAME).dvi
