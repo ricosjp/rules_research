@@ -1,7 +1,8 @@
 SUBDIRS := $(wildcard */)
+.PHONY: $(SUBDIRS)
 
-.PHONY: all
-all:
-	for dir in $(SUBDIRS); do \
-      make -C $$dir all; \
-  done
+%::
+	$(MAKE) $(SUBDIRS) MAKECMDGOALS=$@
+
+$(SUBDIRS):
+	make -C $@ $(MAKECMDGOALS)
