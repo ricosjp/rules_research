@@ -9,7 +9,7 @@ pages:
     - make pdf -j
     - mkdir -p ./public/
     - find . -name '*.pdf' | xargs -I% mv % ./public/
-    - for name in `ls pubic/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; done
+    - for name in `ls public/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; done
   artifacts:
     paths:
     - public
