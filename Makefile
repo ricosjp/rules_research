@@ -1,0 +1,9 @@
+SUBDIRS := tex
+.PHONY: $(SUBDIRS)
+
+%::
+	$(MAKE) $(SUBDIRS) MAKECMDGOALS=$@
+
+$(SUBDIRS):
+	make -C $@ $(MAKECMDGOALS)
+
