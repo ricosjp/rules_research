@@ -1,0 +1,27 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container:
+        image: texlive/texlive
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v1
+      - name: make
+        run: |
+          make -j
+          mkdir -p ./public/
+          find . -name '*.pdf' | xargs -I% mv % ./public/
+          for name in `ls public/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; echo "$name" >> public/list.txt; done
+      - name: pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+          force_orphan: true
