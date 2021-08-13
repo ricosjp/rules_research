@@ -19,7 +19,7 @@ pages:
   dependencies:
       - build
   script:
-    - for name in `ls public/*.pdf`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; echo "$name" >> public/list.txt; done
+    - for name in `ls public/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; echo "$name" >> public/list.txt; done
   artifacts:
     paths:
     - public
