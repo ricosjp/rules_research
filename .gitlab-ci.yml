@@ -1,15 +1,29 @@
-image: mirisbowring/texlive_ctan_full:2019
-
 stages:
+  - build
   - deploy
 
-pages:
-  stage: deploy
+build:
+  stage: build
+  image: mirisbowring/texlive_ctan_full:2019
   script:
     - make -j
     - mkdir -p ./public/
     - find . -name '*.pdf' | xargs -I% mv % ./public/
-    - for name in `ls public/`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; done
   artifacts:
     paths:
     - public
+
+pages:
+  stage: deploy
+  image: alpine
+  dependencies:
+      - build
+  script:
+    - for name in `ls public/*.pdf`; do echo "<a href=./$name>$name</a><br>" >> public/index.html; echo "$name" >> public/list.txt; done
+  artifacts:
+    paths:
+    - public
+  only:
+    refs:
+      - main
+      - pages
