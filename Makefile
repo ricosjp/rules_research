@@ -1,4 +1,4 @@
-SUBDIRS := tex
+SUBDIRS := src
 .PHONY: $(SUBDIRS)
 
 %::

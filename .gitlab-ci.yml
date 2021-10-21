@@ -4,7 +4,7 @@ stages:
 
 build:
   stage: build
-  image: mirisbowring/texlive_ctan_full:2019
+  image: texlive/texlive
   script:
     - make -j
     - mkdir -p ./public/
