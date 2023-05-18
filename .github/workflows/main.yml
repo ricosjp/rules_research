@@ -25,3 +25,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
           force_orphan: true
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: repository
+        run: |
+          curl -X POST https://api.github.com/repos/ricosjp/rules/dispatches \
+          -H "Accept: application/vnd.github.v3+json" \
+          -H "authorization: token ${{ secrets.DISPATCH_TOKEN }}" \
+          --data '{"event_type":"from '$GITHUB_REPOSITORY'"}'
